@@ -2,7 +2,7 @@
 
 import asyncio
 from pyrogram import Client, idle
-from . import Rikka, tbot
+from . import KurisuMakise, tbot
 from .utils.db import _close_db
 
 
