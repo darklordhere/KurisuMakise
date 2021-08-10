@@ -39,29 +39,25 @@ if ENV:
     OWNER_USERNAME = os.environ.get("OWNER_USERNAME", None)
 
     try:
-        DRAGONS = set(int(x) for x in os.environ.get("DRAGONS", "").split())
-        DEV_USERS = set(int(x) for x in os.environ.get("DEV_USERS", "").split())
+        MAKISE_OWN = set(int(x) for x in os.environ.get("MAKISE_OWN", "").split()) #OWNER
+        RINTAROU = set(int(x) for x in os.environ.get("RINTAROU", "").split()) #dev
     except ValueError:
-        raise Exception(
-            "Your sudo or dev users list does not contain valid integers.")
+       raise Exception("Your sudo or dev users list does not contain valid integers.")
 
     try:
-        DEMONS = set(int(x) for x in os.environ.get("DEMONS", "").split())
+        MAYURI = set(int(x) for x in os.environ.get("MAYURI", "").split()) #SUPPORT USERS
     except ValueError:
-        raise Exception(
-            "Your support users list does not contain valid integers.")
+        raise Exception("Your support users list does not contain valid integers.")
 
     try:
-        WOLVES = set(int(x) for x in os.environ.get("WOLVES", "").split())
+        SUZUHA = set(int(x) for x in os.environ.get("SUZUHA", "").split()) #WHITELIST
     except ValueError:
-        raise Exception(
-            "Your whitelisted users list does not contain valid integers.")
+        raise Exception("Your whitelisted users list does not contain valid integers.")
 
     try:
-        TIGERS = set(int(x) for x in os.environ.get("TIGERS", "").split())
+        FARIS = set(int(x) for x in os.environ.get("FARIS", "").split()) # PERMISSION TO BAN
     except ValueError:
-        raise Exception(
-            "Your tiger users list does not contain valid integers.")
+        raise Exception("Your tiger users list does not contain valid integers.")
 
     INFOPIC = bool(os.environ.get('INFOPIC', False))
     EVENT_LOGS = os.environ.get('EVENT_LOGS', None)
