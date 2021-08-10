@@ -28,7 +28,7 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
 ENV = bool(os.environ.get('ENV', False))
 
 if ENV:
-    TOKEN = os.environ.get('TOKEN', None)
+    BOT_TOKEN = os.environ.get('BOT_TOKEN', None)
 
     try:
         OWNER_ID = int(os.environ.get('OWNER_ID', None))
@@ -94,8 +94,8 @@ if ENV:
             "Your blacklisted chats list does not contain valid integers.")
 
 else:
-    from ErzaScarlet.config import Development as Config
-    TOKEN = Config.TOKEN
+    from KurisuMakise.config import Development as Config
+    BOT_TOKEN = Config.TOKEN
 
     try:
         OWNER_ID = int(Config.OWNER_ID)
@@ -167,7 +167,7 @@ else:
     sw = spamwatch.Client(SPAMWATCH_API)
 
 
-updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
+updater = tg.Updater(BOT_TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("ErzaScarlet", API_ID, API_HASH)
 dispatcher = updater.dispatcher
 
