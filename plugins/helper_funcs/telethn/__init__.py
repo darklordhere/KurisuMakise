@@ -1,0 +1,6 @@
+from KurisuMakise import (RINTAROU, MAKISE_OWN, MAYURI, FARIS, SUZUHA, telethn)
+
+IMMUNE_USERS = MAKISE_OWN + SUZUHA + MAYURI + FARIS + RINTAROU
+
+IMMUNE_USERS = list(MAKISE_OWN) + list(SUZUHA) + list(MAYURI) + list(
+    FARIS) + list(RINTAROU)
