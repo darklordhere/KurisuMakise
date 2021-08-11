@@ -5,15 +5,15 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
-from ErzaScarlet import (DEV_USERS, LOGGER, OWNER_ID, DRAGONS, DEMONS, TIGERS,
+from KurisuMakise import (DEV_USERS, LOGGER, OWNER_ID, DRAGONS, DEMONS, TIGERS,
                           WOLVES, dispatcher)
-from ErzaScarlet.modules.disable import DisableAbleCommandHandler
-from ErzaScarlet.modules.helper_funcs.chat_status import (
+from KurisuMakise.modules.disable import DisableAbleCommandHandler
+from KurisuMakise.modules.helper_funcs.chat_status import (
     bot_admin, can_restrict, connection_status, is_user_admin,
     is_user_ban_protected, is_user_in_chat, user_admin, user_can_ban)
-from ErzaScarlet.modules.helper_funcs.extraction import extract_user_and_text
-from ErzaScarlet.modules.helper_funcs.string_handling import extract_time
-from ErzaScarlet.modules.log_channel import gloggable, loggable
+from KurisuMakise.modules.helper_funcs.extraction import extract_user_and_text
+from KurisuMakise.modules.helper_funcs.string_handling import extract_time
+from KurisuMakise.modules.log_channel import gloggable, loggable
 
 
 @run_async

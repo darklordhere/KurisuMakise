@@ -6,19 +6,19 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, MessageHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
-import ErzaScarlet.modules.sql.blacklist_sql as sql
-from ErzaScarlet import dispatcher, LOGGER
-from ErzaScarlet.modules.disable import DisableAbleCommandHandler
-from ErzaScarlet.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from ErzaScarlet.modules.helper_funcs.extraction import extract_text
-from ErzaScarlet.modules.helper_funcs.misc import split_message
-from ErzaScarlet.modules.log_channel import loggable
-from ErzaScarlet.modules.warns import warn
-from ErzaScarlet.modules.helper_funcs.string_handling import extract_time
-from ErzaScarlet.modules.connection import connected
-from ErzaScarlet.modules.sql.approve_sql import is_approved
+import KurisuMakise.modules.sql.blacklist_sql as sql
+from KurisuMakise import dispatcher, LOGGER
+from KurisuMakise.modules.disable import DisableAbleCommandHandler
+from KurisuMakise.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from KurisuMakise.modules.helper_funcs.extraction import extract_text
+from KurisuMakise.modules.helper_funcs.misc import split_message
+from KurisuMakise.modules.log_channel import loggable
+from KurisuMakise.modules.warns import warn
+from KurisuMakise.modules.helper_funcs.string_handling import extract_time
+from KurisuMakise.modules.connection import connected
+from KurisuMakise.modules.sql.approve_sql import is_approved
 
-from ErzaScarlet.modules.helper_funcs.alternate import send_message, typing_action
+from KurisuMakise.modules.helper_funcs.alternate import send_message, typing_action
 
 BLACKLIST_GROUP = 11
 

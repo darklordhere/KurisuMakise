@@ -1,19 +1,19 @@
 import html
 from typing import Optional
 
-import ErzaScarlet.modules.sql.blsticker_sql as sql
-from ErzaScarlet import LOGGER, dispatcher
-from ErzaScarlet.modules.connection import connected
-from ErzaScarlet.modules.disable import DisableAbleCommandHandler
-from ErzaScarlet.modules.helper_funcs.alternate import send_message
-from ErzaScarlet.modules.helper_funcs.chat_status import (user_admin,
+import KurisuMakise.modules.sql.blsticker_sql as sql
+from KurisuMakise import LOGGER, dispatcher
+from KurisuMakise.modules.connection import connected
+from KurisuMakise.modules.disable import DisableAbleCommandHandler
+from KurisuMakise.modules.helper_funcs.alternate import send_message
+from KurisuMakise.modules.helper_funcs.chat_status import (user_admin,
                                                            user_not_admin)
-from ErzaScarlet.modules.helper_funcs.misc import split_message
-from ErzaScarlet.modules.helper_funcs.string_handling import extract_time
+from KurisuMakise.modules.helper_funcs.misc import split_message
+from KurisuMakise.modules.helper_funcs.string_handling import extract_time
 
-from ErzaScarlet.modules.log_channel import loggable
-from ErzaScarlet.modules.warns import warn
-from ErzaScarlet.modules.sql.approve_sql import is_approved 
+from KurisuMakise.modules.log_channel import loggable
+from KurisuMakise.modules.warns import warn
+from KurisuMakise.modules.sql.approve_sql import is_approved 
 from telegram import (Chat, Message, ParseMode, Update, User, ChatPermissions)
 from telegram.error import BadRequest
 from telegram.ext import (CallbackContext, CommandHandler, Filters,
