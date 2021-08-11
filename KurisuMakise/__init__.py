@@ -28,7 +28,7 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
 ENV = bool(os.environ.get('ENV', False))
 
 if ENV:
-    BOT_TOKEN = os.environ.get('BOT_TOKEN', None)
+    TOKEN = os.environ.get('TOKEN', None)
 
     try:
         OWNER_ID = int(os.environ.get('OWNER_ID', None))
@@ -39,25 +39,29 @@ if ENV:
     OWNER_USERNAME = os.environ.get("OWNER_USERNAME", None)
 
     try:
-        MAKISE_OWN = set(int(x) for x in os.environ.get("MAKISE_OWN", "").split()) #OWNER
-        RINTAROU = set(int(x) for x in os.environ.get("RINTAROU", "").split()) #dev
+        DRAGONS = set(int(x) for x in os.environ.get("DRAGONS", "").split())
+        DEV_USERS = set(int(x) for x in os.environ.get("DEV_USERS", "").split())
     except ValueError:
-       raise Exception("Your sudo or dev users list does not contain valid integers.")
+        raise Exception(
+            "Your sudo or dev users list does not contain valid integers.")
 
     try:
-        MAYURI = set(int(x) for x in os.environ.get("MAYURI", "").split()) #SUPPORT USERS
+        DEMONS = set(int(x) for x in os.environ.get("DEMONS", "").split())
     except ValueError:
-        raise Exception("Your support users list does not contain valid integers.")
+        raise Exception(
+            "Your support users list does not contain valid integers.")
 
     try:
-        SUZUHA = set(int(x) for x in os.environ.get("SUZUHA", "").split()) #WHITELIST
+        WOLVES = set(int(x) for x in os.environ.get("WOLVES", "").split())
     except ValueError:
-        raise Exception("Your whitelisted users list does not contain valid integers.")
+        raise Exception(
+            "Your whitelisted users list does not contain valid integers.")
 
     try:
-        FARIS = set(int(x) for x in os.environ.get("FARIS", "").split()) # PERMISSION TO BAN
+        TIGERS = set(int(x) for x in os.environ.get("TIGERS", "").split())
     except ValueError:
-        raise Exception("Your tiger users list does not contain valid integers.")
+        raise Exception(
+            "Your tiger users list does not contain valid integers.")
 
     INFOPIC = bool(os.environ.get('INFOPIC', False))
     EVENT_LOGS = os.environ.get('EVENT_LOGS', None)
@@ -68,7 +72,6 @@ if ENV:
     API_ID = os.environ.get('API_ID', None)
     API_HASH = os.environ.get('API_HASH', None)
     DB_URI = os.environ.get('DATABASE_URL')
-    DB_URL = os.environ.get('DATABASE_URL')
     DONATION_LINK = os.environ.get('DONATION_LINK')
     LOAD = os.environ.get("LOAD", "").split()
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
@@ -85,7 +88,6 @@ if ENV:
     SUPPORT_CHAT = os.environ.get('SUPPORT_CHAT', None)
     SPAMWATCH_SUPPORT_CHAT = os.environ.get('SPAMWATCH_SUPPORT_CHAT', None)
     SPAMWATCH_API = os.environ.get('SPAMWATCH_API', None)
-    OWNER = int(os.environ.get('OWNER_ID', None))
 
     try:
         BL_CHATS = set(int(x) for x in os.environ.get('BL_CHATS', "").split())
@@ -95,7 +97,7 @@ if ENV:
 
 else:
     from KurisuMakise.config import Development as Config
-    BOT_TOKEN = Config.TOKEN
+    TOKEN = Config.TOKEN
 
     try:
         OWNER_ID = int(Config.OWNER_ID)
@@ -106,25 +108,29 @@ else:
     OWNER_USERNAME = Config.OWNER_USERNAME
 
     try:
-        MAKISE_OWN = set(int(x) for x in os.environ.get("MAKISE_OWN", "").split()) #OWNER
-        RINTAROU = set(int(x) for x in os.environ.get("RINTAROU", "").split()) #dev
+        DRAGONS = set(int(x) for x in Config.DRAGONS or [])
+        DEV_USERS = set(int(x) for x in Config.DEV_USERS or [])
     except ValueError:
-       raise Exception("Your sudo or dev users list does not contain valid integers.")
+        raise Exception(
+            "Your sudo or dev users list does not contain valid integers.")
 
     try:
-        MAYURI = set(int(x) for x in os.environ.get("MAYURI", "").split()) #SUPPORT USERS
+        DEMONS = set(int(x) for x in Config.DEMONS or [])
     except ValueError:
-        raise Exception("Your support users list does not contain valid integers.")
+        raise Exception(
+            "Your support users list does not contain valid integers.")
 
     try:
-        SUZUHA = set(int(x) for x in os.environ.get("SUZUHA", "").split()) #WHITELIST
+        WOLVES = set(int(x) for x in Config.WOLVES or [])
     except ValueError:
-        raise Exception("Your whitelisted users list does not contain valid integers.")
+        raise Exception(
+            "Your whitelisted users list does not contain valid integers.")
 
     try:
-        FARIS = set(int(x) for x in os.environ.get("FARIS", "").split()) # PERMISSION TO BAN
+        TIGERS = set(int(x) for x in Config.TIGERS or [])
     except ValueError:
-        raise Exception("Your tiger users list does not contain valid integers.")
+        raise Exception(
+            "Your tiger users list does not contain valid integers.")
 
     EVENT_LOGS = Config.EVENT_LOGS
     WEBHOOK = Config.WEBHOOK
@@ -157,8 +163,8 @@ else:
         raise Exception(
             "Your blacklisted chats list does not contain valid integers.")
 
-MAKISE_OWN.add(OWNER_ID)
-RINTAROU.add(OWNER_ID)
+DRAGONS.add(OWNER_ID)
+DEV_USERS.add(OWNER_ID)
 
 if not SPAMWATCH_API:
     sw = None
@@ -167,18 +173,18 @@ else:
     sw = spamwatch.Client(SPAMWATCH_API)
 
 
-updater = tg.Updater(BOT_TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient("ErzaScarlet", API_ID, API_HASH)
+updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
+telethn = TelegramClient("KurisuMakise", API_ID, API_HASH)
 dispatcher = updater.dispatcher
 
-MAKISE_OWN = list(MAKISE_OWN) + list(RINTAROU)
-RINTAROU = list(RINTAROU)
-MAYURI = list(MAYURI)
-SUZUHA = list(SUZUHA)
-FARIS = list(FARIS)
+DRAGONS = list(DRAGONS) + list(DEV_USERS)
+DEV_USERS = list(DEV_USERS)
+WOLVES = list(WOLVES)
+DEMONS = list(DEMONS)
+TIGERS = list(TIGERS)
 
 # Load at end to ensure all prev variables have been set
-from KurisuMakise.plugins.helper_funcs.handlers import (CustomCommandHandler,
+from KurisuMakise.modules.helper_funcs.handlers import (CustomCommandHandler,
                                                         CustomMessageHandler,
                                                         CustomRegexHandler)
 

@@ -10,9 +10,9 @@ from KurisuMakise import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
                           dispatcher, StartTime, telethn, updater)
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from KurisuMakise.plugins import ALL_MODULES
-from KurisuMakise.plugins.helper_funcs.chat_status import is_user_admin
-from KurisuMakise.plugins.helper_funcs.misc import paginate_modules
+from KurisuMakise.modules import ALL_MODULES
+from KurisuMakise.modules.helper_funcs.chat_status import is_user_admin
+from KurisuMakise.modules.helper_funcs.misc import paginate_modules
 from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
                       Update)
 from telegram.error import (BadRequest, ChatMigrated, NetworkError,
@@ -53,17 +53,16 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 Hey there, {}!
-Hey I Am {}
-*Made By*: [IndiAnime](https://telegra.ph/file/a5f474149957f5e242c44.jpg) 
-*Status*: `Working Fine`
-*Life Force*: `100%` 
-I help Nines in groups while providing some fun games and anime commands for members. Click /help for help window.
-[Important Updates](https://t.me/IndianimeBotLogs) | [Anime Channel](https://t.me/indianimei) | [Anime Disucss](t.me/indianimein)
+
+I'm Makise Bot specifically designed to use certain commands that are necessary to Manage Your Group. HD Walls , Memes , Reversing Images & Many More Exiting features.
+
+[Disucssion Group](https://t.me/Global_Talks) | [Anime Channel](https://t.me/WaifuHunters)
 """
 
 HELP_STRINGS = """
 *{}* at your service.
 I can help you with following functions in managing group.
+
 *Main* commands available:
  • /help: PM's you this message.
  • /help <module name>: PM's you info about that module.
@@ -71,18 +70,20 @@ I can help you with following functions in managing group.
  • /settings:
    • in PM: will send you your settings for all supported modules.
    • in a group: will redirect you to pm, with all that chat's settings.
+
+
 {}
 And the following:
 """.format(
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-ErzaScarlet_IMG = "https://telegra.ph/file/a5f474149957f5e242c44.jpg" #"https://telegra.ph/file/ff21a6f2a29ac89932368.master
-ErzaScarlet_YAWN = "https://telegra.ph/file/5c80858de58f5ff38c930.mp4" #"https://telegra.ph/file/df5c1103ab9d539ab760d.gif"
+KurisuMakise_IMG = "https://telegra.ph/file/a7a3859d6ceea7dae9a3c.jpg" #"https://telegra.ph/file/ff21a6f2a29ac89932368.master
+KurisuMakise_YAWN = "https://telegra.ph/file/6cc9dfd28a44b89615f5c.jpg" #"https://telegra.ph/file/df5c1103ab9d539ab760d.gif"
 YAWN_CPT = "I wanna sleep, yawn~ 💤"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
-NO NEED TO DONATE ; [No Need](https://indianime.com/donate), or [No Need](https://indianime.com/donate)."""
+NO NEED TO DONATE ; [No Need](https://animematrix.com/donate), or [No Need](https://animematrix.com/donate)."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -95,7 +96,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("ErzaScarlet.modules." +
+    imported_module = importlib.import_module("KurisuMakise.modules." +
                                               module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
@@ -191,7 +192,7 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(
-                ErzaScarlet_IMG,
+                KurisuMakise_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name),
                     escape_markdown(context.bot.first_name)),
@@ -199,13 +200,13 @@ def start(update: Update, context: CallbackContext):
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton(
-                        text="Add Kurisu Makise to your group",
+                        text="Add Erza Scarlet to your group",
                         url="t.me/{}?startgroup=true".format(
                             context.bot.username))
                 ]]))
     else:
         update.effective_message.reply_video(
-            ErzaScarlet_YAWN, 
+            KurisuMakise_YAWN, 
             YAWN_CPT.format(
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,

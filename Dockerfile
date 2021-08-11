@@ -64,11 +64,11 @@ RUN apt update && apt upgrade -y && \
 # Pypi package Repo upgrade
 RUN pip3 install --upgrade pip setuptools
 
-# Copy Python Requirements to /root/SaitamaRobot
-RUN git clone https://github.com/noobsohail/KurisuMakise /root/KurisuMakise
+# Copy Python Requirements to /root/KurisuMakise
+RUN git clone -m https://github.com/noobsohail/KurisuMakise /root/KurisuMakise
 WORKDIR /root/KurisuMakise
 
-#Copy config file to /root/SaitamaRobot/SaitamaRobot
+#Copy config file to /root/KurisuMakise/KurisuMakise
 COPY ./KurisuMakise/sample_config.py ./KurisuMakise/config.py* /root/KurisuMakise/KurisuMakise/
 
 ENV PATH="/home/bot/bin:$PATH"
