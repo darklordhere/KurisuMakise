@@ -1,3 +1,3 @@
-worker: python3 -m KurisuMakise
-web: python3 -m KurisuMakise
+worker: python3 -m ErzaScarlet
+web: python3 -m ErzaScarlet
 ps:scale worker=1
