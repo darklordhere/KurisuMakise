@@ -12,7 +12,7 @@ from telegram import TelegramError, Update
 from telegram.ext import run_async, CallbackContext
 from telegram.utils.helpers import mention_html
 
-from KurisuMakiseimport dispatcher
+from KurisuMakise import dispatcher
 from ErzaScarlet.modules.disable import DisableAbleCommandHandler
 
 
