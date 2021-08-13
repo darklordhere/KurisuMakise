@@ -1,14 +1,14 @@
 {
-      "name": "ErzaScarlet",
+      "name": "KurisuMakise",
       "description": "An Anime themed Telegram group management bot.",
       "keywords": [
          "telegram",
          "anime",
          "group",
          "manager",
-         "ErzaScarlet"
+         "KurisuMakise"
       ],   
-   "repository": "https://github.com/noobsohail/ErzaScarlet",
+   "repository": "https://github.com/noobsohail/KurisuMakise",
    "addons": [
       {
          "options": {
